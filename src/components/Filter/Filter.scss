@@ -1,0 +1,34 @@
+@use '../../scss/' as *;
+
+.tags {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    border-bottom: 2px solid white;
+    padding-bottom: 20px;
+    
+
+    .tag {
+        color: white;
+        padding: 5px 15px;
+        background-color: $main-color;
+        border-radius: 20px;
+        margin: 5px;
+        display: inline-block;
+        cursor: pointer;
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+            box-shadow: 0px 0px 7px 8px red;
+        }
+
+        &:active {
+            background-color: $main-color; 
+        }
+    }
+}
+
+
