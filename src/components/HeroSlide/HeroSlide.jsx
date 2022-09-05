@@ -4,6 +4,7 @@ import SwiperCore, { Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './HeroSlide.scss';
 import HeroSlideItem from './HeroSlideItem';
+import TrailerModal from './TrailerModal';
 
 HeroSlide.propTypes = {};
 
@@ -50,6 +51,9 @@ function HeroSlide(props) {
           </SwiperSlide>
         ))}
       </Swiper>
+      {movieItems.map((item) => (
+        <TrailerModal key={item.id} item={item} />
+      ))}
     </div>
   );
 }

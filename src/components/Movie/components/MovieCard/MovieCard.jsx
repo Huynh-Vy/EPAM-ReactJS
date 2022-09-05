@@ -1,11 +1,8 @@
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import apiConfig from 'api/apiConfig';
 import { category } from 'api/tmdbApi';
+import Button from 'components/Button/Button';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './MovieCard.scss';
 
@@ -13,8 +10,6 @@ const MovieCard = (props) => {
   const { item} = props;
 
   const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path);
-  const [clickFavoriteIcon, setClickFavoriteIcon] = useState(false);
-  const [addItem, setAddItem] = useState(true);
 
   const link = '/' + category[props.category] + '/' + item.id;
 
@@ -28,22 +23,14 @@ const MovieCard = (props) => {
     colorVote = 'yellow';
   }
 
-
-
-  const handleClickFavoriteIcon = () => {
-    clickFavoriteIcon ? setClickFavoriteIcon(false) : setClickFavoriteIcon(true);
-  }
-
-  const handleAddItem = () => {
-    addItem ? setAddItem(false) : setAddItem(true);
-  }
-
   return (
     <>
-    
       <div className="poster-container">
       <Link to={link}>
         <div className="movie-card" style={{ backgroundImage: `url(${bg})` }}>
+        <Button>
+          <PlayArrowIcon fontSize="large"/>
+        </Button>
         </div>
       </Link>
 
@@ -51,20 +38,6 @@ const MovieCard = (props) => {
         <h3>
           Vote: <span className="vote-average" style={{color: `${colorVote}`}}>{item["vote_average"]}</span>
         </h3>
-
-        <div>
-          <span>  
-            {
-              !clickFavoriteIcon &&  <FavoriteBorderIcon onClick={handleClickFavoriteIcon}/>
-            }
-          </span>
-
-          <span>
-            {
-              clickFavoriteIcon &&  <FavoriteIcon onClick={handleClickFavoriteIcon}/>
-            }
-          </span>
-        </div>
       </div>
     </>
   );

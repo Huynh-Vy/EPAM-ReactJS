@@ -48,6 +48,11 @@ const tmdbApi = {
         return axiosClient.get(url, params);
     },
 
+    getVideos: (cate, id) => {
+        const url = `${category[cate]}/${id}/videos`;
+        return axiosClient.get(url, { params: {} });
+    },
+
     getDetail: (cate, id, params) => {
         const url = `${category[cate]}/${id}`;
         return axiosClient.get(url, params);
